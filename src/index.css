@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@300;400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #0F0D0B;
+  --color-ivory: #F5F0E8;
+  --color-gold: #D4AF6A;
+  --color-mutedgold: #A89060;
+  --color-ink: #1C1612;
+  --color-ash: #6B5E52;
+  --color-rose: #D9C4B5;
+  --color-night: #1F1A16;
+
+  --font-cormorant: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-lora: "Lora", "Inter", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --animate-shimmer: shimmer 3s infinite linear;
+  --animate-grain: grain 8s steps(10) infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes grain {
+  0%, 100% { transform:translate(0, 0) }
+  10% { transform:translate(-5%, -10%) }
+  20% { transform:translate(-15%, 5%) }
+  30% { transform:translate(7%, -25%) }
+  40% { transform:translate(-5%, 25%) }
+  50% { transform:translate(-15%, 10%) }
+  60% { transform:translate(15%, 0%) }
+  70% { transform:translate(0%, 15%) }
+  80% { transform:translate(3%, 35%) }
+  95% { transform:translate(-10%, 10%) }
+}
+
+/* Custom global styles */
+body {
+  background-color: #F5F0E8;
+  color: #1C1612;
+  font-family: "Lora", serif;
+  overflow-x: hidden;
+  line-height: 1.85;
+}
+
+/* Selection */
+::selection {
+  background-color: #D4AF6A;
+  color: #0F0D0B;
+}
+
+/* custom thin scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1F1A16;
+}
+::-webkit-scrollbar-thumb {
+  background: #A89060;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF6A;
+}
+
+.shimmer-btn {
+  background: linear-gradient(90deg, #D4AF6A 0%, #E5C384 25%, #A89060 50%, #E5C384 75%, #D4AF6A 100%);
+  background-size: 200% auto;
+  color: #0F0D0B;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.shimmer-btn:hover {
+  background-position: right center;
+  box-shadow: 0 4px 20px rgba(212, 175, 106, 0.4);
+}
+
+/* Film Grain Overlay - Removed for clean, solid background */
+.film-grain {
+  display: none !important;
+}
+
+/* Underline reveal */
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: #D4AF6A;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-out;
+}
+.nav-link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Custom focus ring */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #D4AF6A;
+  box-shadow: 0 0 0 1px #D4AF6A;
+}
